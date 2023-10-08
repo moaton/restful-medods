@@ -31,6 +31,7 @@
 # APIs
 ##### [POST]  /consultation-requests
 >   Создание запроса на консультацию
+
 Body: 
 {
     "first_name": "Daniel",
@@ -49,6 +50,7 @@ Response:
 
 ##### [POST]  /consultation-requests/{id}/recommendation
 >   Создание рекомендации для конкретного запроса на консультацию
+
 Response:
 {
     "recommendations": [
@@ -65,6 +67,7 @@ Response:
 
 ##### [GET]   /patient/{id}/recommendations
 >   Получение списка рекомендаций для конкретного пациента
+
 Body: 
 {
     "text": "Recommendation about knee"
