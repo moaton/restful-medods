@@ -10,8 +10,8 @@
 │   ├───service<br />
 │   └───transport<br />
 └───pkg<br />
-&nbsp;&nbsp;└───client<br />
-        └───postgresql<br />
+&nbsp;&nbsp;&nbsp;└───client<br />
+&nbsp;&nbsp;&nbsp;&nbsp;└───postgresql<br />
 
 - cmd - основная папка в которой содержиться точка входа в приложение (main.go)
 
