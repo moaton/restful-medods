@@ -1,17 +1,17 @@
 # RESTFul API
 
 ## Структура
-├───cmd
-├───internal
-│   ├───app
-│   ├───models
-│   ├───repository
-│   │   └───postgres
-│   ├───service
-│   └───transport
-└───pkg
-    └───client
-        └───postgresql
+├───cmd<br />
+├───internal<br />
+│   ├───app<br />
+│   ├───models<br />
+│   ├───repository<br />
+│   │   └───postgres<br />
+│   ├───service<br />
+│   └───transport<br />
+└───pkg<br />
+    └───client<br />
+        └───postgresql<br />
 
 - cmd - основная папка в которой содержиться точка входа в приложение (main.go)
 
