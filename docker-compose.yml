@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  server:
+    build: ./
+    ports:
+      - 3000:3000
+    depends_on:
+      - "pg_db"
+    environment:
+      - POSTGRES_HOST=pg_db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+
+
+  pg_db:
+    image: postgres:14
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./.data_base/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
