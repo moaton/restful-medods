@@ -2,7 +2,9 @@ package transport
 
 import (
 	"encoding/json"
+	"io"
 	"log"
+	"math/rand"
 	"net/http"
 	"restful-medods/internal/models"
 	"restful-medods/internal/service"
@@ -152,6 +154,26 @@ func (h *handler) GetPatientRecommendations(w http.ResponseWriter, r *http.Reque
 	if err != nil {
 		util.ResponseError(w, http.StatusBadRequest, err.Error())
 		return
+	}
+
+	res, err := http.Get("https://api.fda.gov/drug/ndc.json?limit=10")
+	if err != nil {
+		log.Printf("http.Get medicine err %v", err)
+	}
+
+	body, err := io.ReadAll(res.Body)
+	if err != nil {
+		log.Printf("io.ReadAll err %v", err)
+	}
+
+	var data models.MedicineResponse
+	err = json.Unmarshal(body, &data)
+	if err != nil {
+		log.Printf("json.Unmarshal err %v", err)
+	}
+
+	for i := range recommendations {
+		recommendations[i].Medicines = data.Results[:rand.Intn(10)]
 	}
 
 	util.ResponseOk(w, response{

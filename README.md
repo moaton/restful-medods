@@ -60,25 +60,6 @@ Response:
 >   Создание рекомендации для конкретного запроса на консультацию
 
 ```
-Response:
-{
-    "recommendations": [
-        {
-            "first_name": "Daniel",
-            "middle_name": "Parker",
-            "last_name": "John",
-            "request_text": "My second",
-            "recommendations": "Recommendation about health; Recommendation about knee"
-        }
-    ],
-    "total": 1
-}
-```
-
-##### [GET]   /patient/{id}/recommendations
->   Получение списка рекомендаций для конкретного пациента
-
-```
 Body: 
 {
     "text": "Recommendation about knee"
@@ -87,5 +68,111 @@ Resonse:
 {
     "id": 2,
     "message": "success"
+}
+```
+
+##### [GET]   /patient/{id}/recommendations
+>   Получение списка рекомендаций для конкретного пациента, используется API OpenFDA для получения медицинский перпаратов (количество перпаратов с каждым запросом рандомны)
+
+```
+Response:
+{
+    "recommendations": [
+        {
+            "first_name": "Daniel",
+            "middle_name": "Parker",
+            "last_name": "John",
+            "request_text": "My second",
+            "recommendations": "Recommendation about health; Recommendation about knee",
+            "medicine": [
+                {
+                    "product_ndc": "72606-003",
+                    "brand_name": "Clobazam",
+                    "active_ingredients": [
+                        {
+                            "name": "CLOBAZAM",
+                            "strength": "10 mg/1"
+                        }
+                    ],
+                    "route": [
+                        "ORAL"
+                    ],
+                    "labeler_name": "CELLTRION USA, INC."
+                }
+            ]
+        }
+    ],
+    "total": 1
+}
+
+{
+    "recommendations": [
+        {
+            "first_name": "Daniel",
+            "middle_name": "Parker",
+            "last_name": "John",
+            "request_text": "My second",
+            "recommendations": "Recommendation about health; Recommendation about knee",
+            "medicine": []
+        }
+    ],
+    "total": 1
+}
+
+{
+    "recommendations": [
+        {
+            "first_name": "Daniel",
+            "middle_name": "Parker",
+            "last_name": "John",
+            "request_text": "My second",
+            "recommendations": "Recommendation about health; Recommendation about knee",
+            "medicine": [
+                {
+                    "product_ndc": "72606-003",
+                    "brand_name": "Clobazam",
+                    "active_ingredients": [
+                        {
+                            "name": "CLOBAZAM",
+                            "strength": "10 mg/1"
+                        }
+                    ],
+                    "route": [
+                        "ORAL"
+                    ],
+                    "labeler_name": "CELLTRION USA, INC."
+                },
+                {
+                    "product_ndc": "72698-811",
+                    "brand_name": "Art of Sport Anti Dandruff Compete",
+                    "active_ingredients": [
+                        {
+                            "name": "PYRITHIONE ZINC",
+                            "strength": "100 g/mL"
+                        }
+                    ],
+                    "route": [
+                        "TOPICAL"
+                    ],
+                    "labeler_name": "AOS GROUP INC, THE"
+                },
+                {
+                    "product_ndc": "72789-184",
+                    "brand_name": "Tadalafil",
+                    "active_ingredients": [
+                        {
+                            "name": "TADALAFIL",
+                            "strength": "10 mg/1"
+                        }
+                    ],
+                    "route": [
+                        "ORAL"
+                    ],
+                    "labeler_name": "PD-Rx Pharmaceuticals, Inc."
+                }
+            ]
+        }
+    ],
+    "total": 1
 }
 ```
